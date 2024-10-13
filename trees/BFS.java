@@ -20,19 +20,21 @@ public class BFS {
 			this.val = val;
 		}
 	}
-	//breath first search
-	public static void bfs(Node root) { //Iterative form
-		Queue<Node> q=new LinkedList<>();
-		if(root!=null) q.add(root);
-		while(q.size()>0) {
-			Node temp=q.peek();
-			if(temp.left!=null) {
+
+	// breath first search
+	public static void bfs(Node root) { // Iterative form
+		Queue<Node> q = new LinkedList<>();
+		if (root != null)
+			q.add(root);
+		while (q.size() > 0) {
+			Node temp = q.peek();
+			if (temp.left != null) {
 				q.add(temp.left);
 			}
-			if(temp.right!=null) {
+			if (temp.right != null) {
 				q.add(temp.right);
 			}
-			System.out.print(temp.val+" ");
+			System.out.print(temp.val + " ");
 			q.remove();
 		}
 	}

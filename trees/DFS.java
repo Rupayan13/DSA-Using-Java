@@ -19,59 +19,74 @@ public class DFS {
 			this.val = val;
 		}
 	}
+
 	public static void inorder(Node root) {
-		//base case
-		if(root==null) {
+		// base case
+		if (root == null) {
 			return;
 		}
 		inorder(root.left);
-		System.out.print(root.val+" ");
+		System.out.print(root.val + " ");
 		inorder(root.right);
 	}
+
 	public static void dfsInorder(Node root) {
-		Stack<Node> st=new Stack<>();
-		if(root==null) {
+		Stack<Node> st = new Stack<>();
+		if (root == null) {
 			return;
 		}
 		st.push(root);
-		while(!st.isEmpty()) {
-			Node temp=st.peek();
-			if(temp.left!=null) {
+		while (!st.isEmpty()) {
+			Node temp = st.peek();
+			if (temp.left != null) {
 				st.push(temp.left);
-				temp.left=null;
-			}
-			else {
+				temp.left = null;
+			} else {
 				st.pop();
-				System.out.print(temp.val+" ");
-				if(temp.right!=null) {
+				System.out.print(temp.val + " ");
+				if (temp.right != null) {
 					st.push(temp.right);
-					temp.right=null;
+					temp.right = null;
 				}
 			}
 		}
 	}
-//	public static void dfsPreorder(Node root) {
-//		Stack<Node> st=new Stack<>();
-//		if(root==null) {
-//			return;
-//		}
-//		st.push(root);
-//		while(!st.isEmpty()) {
-//			Node temp=st.peek();
-//			if(temp.left!=null) {
-//				st.push(temp.left);
-//				temp.left=null;
-//			}
-//			else {
-//				st.pop();
-//				System.out.print(temp.val+" ");
-//				if(temp.right!=null) {
-//					st.push(temp.right);
-//					temp.right=null;
-//				}
-//			}
-//		}
-//	}
+
+	public static void dfsPreorder(Node root) {
+		Stack<Node> st = new Stack<>();
+		if (root != null)
+			st.push(root);
+		while (!st.isEmpty()) {
+			Node temp = st.pop();
+			System.out.print(temp.val + " ");
+			if (temp.right != null) {
+				st.push(temp.right);
+			}
+			if (temp.left != null) {
+				st.push(temp.left);
+			}
+		}
+	}
+
+	public static void dfsPostorder(Node root) {
+		Stack<Node> st = new Stack<>();
+		Stack<Node> out = new Stack<>();
+		if (root != null)
+			st.push(root);
+		while (!st.isEmpty()) {
+			Node temp = st.pop();
+			out.push(temp);
+			if (temp.left != null) {
+				st.push(temp.left);
+			}
+			if (temp.right != null) {
+				st.push(temp.right);
+			}
+		}
+		while (!out.isEmpty()) {
+			System.out.print(out.pop().val + " ");
+		}
+	}
 
 	/**
 	 * @param args

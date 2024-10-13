@@ -47,7 +47,7 @@ public class SizeMaxSumHeight {
 		// self work
 		int size = 1;
 		// recursive work
-		return sizeOf(root.left) + sizeOf(root.left) + 1;
+		return sizeOf(root.left) + sizeOf(root.left) + size;
 	}
 
 	public static void preorder(Node root) {
